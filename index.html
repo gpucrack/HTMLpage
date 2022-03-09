@@ -17,7 +17,7 @@
 					<div id="intro">
 						<h1>Nous vous présentons<br />
 							GPUCrack</h1>
-						<p>Un casseur de mot de passe Windows uilisant des Rainbow Tables générées sur plusieurs GPU</p>
+						<p>Un casseur de mots de passe Windows uilisant des Rainbow Tables générées sur plusieurs GPU</p>
 						<ul class="actions">
 							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
 						</ul>
@@ -54,40 +54,51 @@
 									<h1>Qu'est ce que GPUCrack ?</h1>
 								</header>
 
-									<p>GPUCrack est un casseur de mots de passe Windows. Ce casseur s’appuie sur la technique des compromis temps-mémoire (TMTO) et des rainbow tables. La création de nos tables se fera sur <i>GPU</i> (Graphic processing unit). <br />
-										<h2>Rappel </h2>
-										Pour rappel, la technique des compromis temps-mémoire sépare le travail en deux phases :
-										<ul>
-										<li>Construction d’une table à l’aide de calculs de chaînes, c’est la phase <b>offline</b>.</li>
-										<li> Utilisation de la table pour casser les mots de passe, c’est la phase <b>online</b>.</li>
-										</ul> 
-									Après avoir réalisé la phase offline une seule fois, le cassage de mots de passe en masse est possible en un temps très court. <br /> <br />
-									Une <i>rainbow table</i> est une structure de données qui permet de retrouver un mot de passe à partir de son hash. Elle se résume à une liste de couples (point de départ, point de fin), où les points de départ et les points de fin sont des mots de passe en clair
-									</p>
+									<p>
+                                    GPUCrack est un casseur de mots de passe Windows. Ce casseur s’appuie sur la technique des compromis temps-mémoire (TMTO) et des rainbow tables. La création de nos tables se fera sur <i>GPU</i> (Graphic processing unit). <br />
+                                    </p>
+                                    <h2>Objectif du projet </h2>
+                                    <p>
+								    Le cassage de mots de passe avec les rainbow tables sur GPU est un sujet de recherche actuel.
+                                    Des implémentations de rainbow tables sur CPU ont déjà été réalisées. En revanche, sur GPU, il est difficile de trouver un code correct, minimal et documenté. Notre code pourra alors servir de référence dans ce domaine. <br />
+                                    Le projet peut apporter de nombreuses réponses sur les différences de performance entre CPU et GPU, sur la possibilité de filtrer nos tables sur GPU ou encore sur la distribution possible de la génération de nos tables sur plusieurs GPU.
+                                    </p>    
 
-									<h2>Le logiciel phase offline </h2>
-									<p>Cette première application, relative à la phase de pré-calculs génère des rainbow tables, optimise les tables et enfin les exporte.
-									Cette application est éxécutable et distribuable sur GPU.</p>
-									<h2>Le logiciel phase online </h2>
-									<p>Cette seconde application, relative à la phase d’attaque, permet le chargement des rainbow tables en mémoire afin de rechercher le mot de passe correspondant au hash donné.
-										Cette application associé avec une interface graphique permet à l'utilisateur de rechercher un mot de passe de façon ludique ainsi que plusieurs statistiques sur les pré-calculs et la recherche de mots de passe  </p>
-									<hr />
-										<h2>Le but </h2>
-										<p>Le cassage de mots de passe avec les rainbow tables sur GPU est un sujet de recherche actuel.
-											Des implémentations de rainbow tables sur CPU et GPU ont déjà été réalisées mais il est difficile
-											de trouver un code correct, minimal et documenté. Notre code pourra alors servir de référence
-											dans ce domaine. <br />
-											Le projet peut apporter de nombreuses réponses sur les différences de performance entre CPU
-											et GPU, sur la possibilité de filtrer nos tables sur GPU ou encore sur la distribution possible de nos
-											tables entre plusieurs GPU.</p>
-
-								
-
-					</div>
+                                    <h2> Les compromis temps-mémoire</h2>
+                                    <p>
+                                    La technique des compromis temps-mémoire sépare le travail en deux phases :
+                                    </p>
+                                    <ul>
+                                        <li>La phase <b>offline</b></li>
+                                        <li>La phase <b>online</b></li>
+                                    </ul> 
+                                    
+                                    <h4>La phase offline</h4>
+                                    <p>
+                                    C'est une phase de pré-calculs qui génère des tables, ici des rainbow tables, les optimise et enfin les exporte. Cette application est éxécutable et distribuable sur GPU.
+                                    <br />
+                                    Une rainbow table est une structure de données qui permet de retrouver un mot de passe à partir de son hash. 
+                                    Une rainbow table est créée en générant des chaînes. Pour créer une chaîne, on part d’un mot de passe que l’on va hacher puis ce hash sera réduit avec une fonction de réduction. On continue la construction de la chaîne en refaisant tour à tour un hachage et une réduction sur le nouveau mot de passe. 
+                                    A la fin, la table gardera seulement la liste de couples (point de départ, point de fin) des chaînes, où les points de départ et les points de fin sont des mots de passe en clair.
+                                    </p>
+                                
+                                    <h4>La phase online </h4>
+                                    <p>
+                                    C'est la phase d’attaque qui permet le chargement des rainbow tables en mémoire afin de rechercher le mot de passe correspondant à un hash donné.
+                                    Cette application associé avec une interface graphique permet à l'utilisateur de rechercher un mot de passe à partir d'un hash de façon ludique mais également d'avoir accès à des rapports d'analyse sur, par exemple, la mémoire utilisée par les tables, le temps de génération de celles-ci ou le temps de recherche du mot de passe. 
+                                    <br /> <br /> <br />   
+                                    La phase offline est réalisée une seule fois et prends un temps considérable alors que la phase online permet le cassage de mots de passe en masse en un temps très court. <br />
+                                    
+                                    </p>
+                        </section>
+				</div>
 				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; GPUCrack</li> <!-- <li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul> -->
-					</div>
+                <div id="copyright">
+                    <ul>
+                        <li>&copy; GPUCrack</li>
+                        <!-- <li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul> -->
+                    </ul>
+                </div>
 
 			</div>
 
