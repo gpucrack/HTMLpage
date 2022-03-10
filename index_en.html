@@ -41,11 +41,47 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Text stuff -->
-									<p>Soon in english ...</p>
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>What is GPUCrack ?</h1>
+								</header>
 
-								
+									<p>
+                                    GPUCrack is a Windows password cracker. This cracker is based on the technique of time-memory trade-off (TMTO) and rainbow tables. The creation of our tables will be done on <i>GPU</i> (Graphic processing unit). <br />
+                                    </p>
+                                    <h2>Purpose of the project</h2>
+                                    <p>
+								    Password cracking with rainbow tables on GPUs is a current research topic. Implementations of rainbow tables on CPU have already been done. However, on GPU, it is difficult to find a correct, minimal and documented code. Our code can therefore be used as a reference in this area. <br />
+                                    The project can provide many answers about the performance differences between CPU and GPU, about the possibility to filter our tables on GPU or about the possible distribution of our table generation on several GPUs.
+                                    </p>    
 
+                                    <h2> Time-memory trade-off</h2>
+                                    <p>
+                                    The time-memory trade-off technique separates the work into two phases:
+                                    </p>
+                                    <ul>
+                                        <li>The <b>offline</b> phase</li>
+                                        <li>The <b>online</b> phase</li>
+                                    </ul> 
+                                    
+                                    <h4>The offline phase</h4>
+                                    <p>
+                                    It is a pre-calculation phase that generates tables, here rainbow tables, optimizes them and finally exports them. This application is executable and distributable on GPU.
+                                    <br />
+                                    A rainbow table is a data structure that allows to find a password from its hash. 
+                                    A rainbow table is created by generating chains. To create a chain, we start from a password which will be hashed then this hash will be reduced with a reduction function. We continue the construction of the chain by doing a hash and a reduction on the new password. At the end, the table will keep only the list of couples (starting point, ending point) of the chains, where the starting points and the ending points are plain text passwords.
+                                    </p>
+                                
+                                    <h4>The online phase</h4>
+                                    <p>
+                                    It is the attack phase that allows the loading of rainbow tables in memory in order to search for the password corresponding to a given hash. This application associated with a graphical interface allows the user to search for a password from a hash in a playful way. it also allows the user to have access to analysis reports on the memory used by the tables, the time of generation of these tables or the time of search of the password.
+
+                                    <br /> <br /> <br />   
+                                    The offline phase is run only once and takes a considerable amount of time, whereas the online phase allows for mass password cracking in a very short time. <br />
+                                    
+                                    </p>
+                        </section>
 					</div>
 
 

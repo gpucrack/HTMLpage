@@ -33,7 +33,7 @@
 						</ul>
 						<ul class="icons">
 							<li><a href="https://github.com/gpucrack" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-							<li><a href="index_en.html" class="icon solid fa-language"><span class="label">English</span></a></li>
+							<li><a href="comment_en.html" class="icon solid fa-language"><span class="label">English</span></a></li>
 						</ul>
 					</nav>
 
@@ -45,28 +45,29 @@
 								<header class="major">
 									<h1>Comment ça marche ?</h1>
 								</header>
-								<h2>Le logiciel phase offline </h2>
-								<p>L’application s’utilise en ligne de commande et est paramétrable, afin de gérer le nombre de chaînes et le nombre de tables. Cette application a pour but d’être exécuté sur un cluster comme Grid’5000. Grid’5000 est un réseau de machines dédié au calcul distribué et aux expérimentations.</p>
+								<h2>Phase offline </h2>
+								<p>L’application s’utilise en ligne de commande et est paramétrable, afin de gérer le nombre de chaînes d'une table et le nombre de tables que l'on souhaite. Cette application a pour but d’être exécuté sur un cluster comme Grid’5000, Grid’5000 étant un réseau de machines dédié au calcul distribué et aux expérimentations.</p>
 								<pre><code>./generateTable c mt (startpath) (endpath)</code></pre>
 								<ul>
 									<li><b>c</b> est la longueur d'un mot de passe (en caractères)</li>
-									<li><b>mt</b>  est le nombre de endpoints dans la table (50 000 000 par exemple)</li>
-									<li>(optional) <b>startpath</b> est le chemin d'accès au fichier de points de départ à créer </li>
-									<li>(optional) <b>endpath</b> est le chemin d'accès au fichier de points d'extrémité à créer</li>
+									<li><b>mt</b> est le nombre de points de fin dans la table (50 000 000 par exemple)</li>
+									<li>(optionnel) <b>startpath</b> est le chemin d'accès au fichier de points de départ à créer </li>
+									<li>(optionnel) <b>endpath</b> est le chemin d'accès au fichier de points de fin à créer</li>
 								</ul>
 								
-								<p>Cela créera deux fichiers distincts aux chemins spécifiés. Ces fichiers contiennent les startpoints et les endpoints filtrés. </p>
+								<p>Cela créera deux fichiers distincts aux chemins spécifiés. Ces fichiers contiennent les points de départ et les points de fin filtrés, c'est à dire sans doublons. </p>
 
 							
-								<h2>Le logiciel phase online </h2>
-								<p>L'utilisateur entre un ou plusieurs hash mots de passe, et l'interface va exécuter le logiciel phase oline dans le but de retrouver le mot de passe qui correspond. Voici un aperçu :  </p>
+								<h2>Phase online </h2>
+								<p>La phase online étant accompagnée d'une interface graphique, l'utilisateur doit entrer un ou plusieurs hash de mots de passe dans la barre de recherche, et l'interface va exécuter le logiciel phase online dans le but de retrouver le mot de passe qui correspond au hash donné. <br \>
+                                Voici un aperçu de l'interface graphique :  </p>
 								
 									<div class="row gtr-50 gtr-uniform" >
 											<div class="col-4"><span class="image fit"><img src="images/schemaUI1.png" alt="" /></span></div>
 											<div class="col-4"><span class="image fit"><img src="images/schemaUI2.png" alt="" /></span></div>
-										</div>
-									</div>
-							
+								    </div>
+									
+                            </section>
 					</div>
 
 

@@ -33,16 +33,41 @@
 						</ul>
 						<ul class="icons">
 							<li><a href="https://github.com/gpucrack" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-							<li><a href="index_en.html" class="icon solid fa-language"><span class="label">English</span></a></li>
+							<li><a href="comment.html" class="icon solid fa-language"><span class="label">Français</span></a></li>
 						</ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Text stuff -->
-									<p>Soon in english ...</p>
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>How to use it?</h1>
+								</header>
+								<h2>Offline phase</h2>
+								<p>The application is used on the command line and is configurable, in order to manage the number of chains in a table and the number of tables that we want. This application is intended to be executed on a cluster like Grid'5000, Grid'5000 being a network of machines dedicated to distributed computing and experiments.</p>
+								<pre><code>./generateTable c mt (startpath) (endpath)</code></pre>
+								<ul>
+									<li><b>c</b> is the length of a password (in characters)</li>
+									<li><b>mt</b> is the number of ending points in the table (50,000,000 for example)</li>
+									<li>(optional) <b>startpath</b> is the path to the starting point file that will be created </li>
+									<li>(optional) <b>endpath</b> is the path to the ending point file that will be created</li>
+								</ul>
+								
+								<p>This will create two separate files at the specified paths. These files contain the filtered start and end points, i.e. without duplicates.</p>
+
 							
+								<h2>Online phase</h2>
+								<p>The online phase is accompanied by a graphical interface. The user must enter one or more password hashes in the search bar, and the interface will run the online phase software in order to find the password that matches the given hash. <br \>
+                                Here is an overview of the graphical interface:  </p>
+								
+									<div class="row gtr-50 gtr-uniform" >
+											<div class="col-4"><span class="image fit"><img src="images/schemaUI1.png" alt="" /></span></div>
+											<div class="col-4"><span class="image fit"><img src="images/schemaUI2.png" alt="" /></span></div>
+								    </div>
+									
+                            </section>
 					</div>
 
 
