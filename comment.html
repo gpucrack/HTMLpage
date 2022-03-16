@@ -45,48 +45,44 @@
 								<header class="major">
 									<h1>Comment ça marche ?</h1>
 								</header>
-                                <h2> Les compromis temps-mémoire</h2>
-                                    <p>
-                                    La technique des compromis temps-mémoire sépare le travail en deux phases :
-                                    </p>
-                                    <ul>
-                                        <li>La phase <b>offline</b></li>
-                                        <li>La phase <b>online</b></li>
-                                    </ul> 
-                                    
-                                    <h4>La phase offline</h4>
-                                    <p>
-                                    C'est une phase de pré-calculs qui génère des tables, ici des rainbow tables, les optimise et enfin les exporte. Cette application est éxécutable et distribuable sur GPU.
-                                    <br />
-                                    Une rainbow table est une structure de données qui permet de retrouver un mot de passe à partir de son hash. 
-                                    Une rainbow table est créée en générant des chaînes. Pour créer une chaîne, on part d’un mot de passe que l’on va hacher puis ce hash sera réduit avec une fonction de réduction. On continue la construction de la chaîne en refaisant tour à tour un hachage et une réduction sur le nouveau mot de passe. 
-                                    A la fin, la table gardera seulement la liste de couples (point de départ, point de fin) des chaînes, où les points de départ et les points de fin sont des mots de passe en clair.
-                                    </p>
-                                
-                                    <div class="image main"><img src="images/rainbowTable.png" alt="" /></div>
-                                
-                                    <h4>La phase online </h4>
-                                    <p>
-                                    C'est la phase d’attaque qui permet le chargement des rainbow tables en mémoire afin de rechercher le mot de passe correspondant à un hash donné.
-                                    Cette application associé avec une interface graphique permet à l'utilisateur de rechercher un mot de passe à partir d'un hash de façon ludique mais également d'avoir accès à des rapports d'analyse sur, par exemple, la mémoire utilisée par les tables, le temps de génération de celles-ci ou le temps de recherche du mot de passe. 
-                                    <br /> <br /> <br />   
-                                    La phase offline est réalisée une seule fois et prends un temps considérable alors que la phase online permet le cassage de mots de passe en masse en un temps très court. <br />
-                                    
-                                    </p>
-								<h2>Phase offline </h2>
-								<p>L’application s’utilise en ligne de commande et est paramétrable, afin de gérer le nombre de chaînes d'une table et le nombre de tables que l'on souhaite. Cette application a pour but d’être exécuté sur un cluster comme Grid’5000, Grid’5000 étant un réseau de machines dédié au calcul distribué et aux expérimentations.</p>
-								<pre><code>./generateTable c mt (startpath) (endpath)</code></pre>
-								<ul>
-									<li><b>c</b> est la longueur d'un mot de passe (en caractères)</li>
-									<li><b>mt</b> est le nombre de points de fin dans la table (50 000 000 par exemple)</li>
-									<li>(optionnel) <b>startpath</b> est le chemin d'accès au fichier de points de départ à créer </li>
-									<li>(optionnel) <b>endpath</b> est le chemin d'accès au fichier de points de fin à créer</li>
-								</ul>
-								
-								<p>Cela créera deux fichiers distincts aux chemins spécifiés. Ces fichiers contiennent les points de départ et les points de fin filtrés, c'est à dire sans doublons. </p>
+                                <p>
+                                La technique des compromis temps-mémoire sépare le travail en deux phases :
+                                </p>
+                                <ul>
+                                    <li>La phase <b>offline</b></li>
+                                    <li>La phase <b>online</b></li>
+                                </ul> 
 
-							
-								<h2>Phase online </h2>
+                                <h3>La phase offline</h3>
+                                <p>
+                                C'est une phase de pré-calculs qui génère des tables, ici des rainbow tables, les optimise et enfin les exporte. Cette application est éxécutable et distribuable sur GPU.
+                                <br />
+                                Une rainbow table est une structure de données qui permet de retrouver un mot de passe à partir de son hash. 
+                                Une rainbow table est créée en générant des chaînes. Pour créer une chaîne, on part d’un mot de passe que l’on va hacher puis ce hash sera réduit avec une fonction de réduction. On continue la construction de la chaîne en refaisant tour à tour un hachage et une réduction sur le nouveau mot de passe. 
+                                A la fin, la table gardera seulement la liste de couples (point de départ, point de fin) des chaînes, où les points de départ et les points de fin sont des mots de passe en clair.
+                                </p>
+
+                                <div class="image main"><img src="images/rainbowTable.png" alt="" /></div>
+
+                                <p>L’application de la phase offline s’utilise en ligne de commande et est paramétrable, afin de gérer le nombre de chaînes d'une table et le nombre de tables que l'on souhaite. Cette application a pour but d’être exécuté sur un cluster comme Grid’5000, Grid’5000 étant un réseau de machines dédié au calcul distribué et aux expérimentations.</p>
+                                <pre><code>./generateTable c mt (startpath) (endpath)</code></pre>
+                                <ul>
+                                <li><b>c</b> est la longueur d'un mot de passe (en caractères)</li>
+                                <li><b>mt</b> est le nombre de points de fin dans la table (50 000 000 par exemple)</li>
+                                <li>(optionnel) <b>startpath</b> est le chemin d'accès au fichier de points de départ à créer </li>
+                                <li>(optionnel) <b>endpath</b> est le chemin d'accès au fichier de points de fin à créer</li>
+                                </ul>
+
+                                <p>Cela créera deux fichiers distincts aux chemins spécifiés. Ces fichiers contiennent les points de départ et les points de fin filtrés, c'est à dire sans doublons. </p>
+
+                                <h3>La phase online </h3>
+                                <p>
+                                C'est la phase d’attaque qui permet le chargement des rainbow tables en mémoire afin de rechercher le mot de passe correspondant à un hash donné.
+                                Cette application associé avec une interface graphique permet à l'utilisateur de rechercher un mot de passe à partir d'un hash de façon ludique mais également d'avoir accès à des rapports d'analyse sur, par exemple, la mémoire utilisée par les tables, le temps de génération de celles-ci ou le temps de recherche du mot de passe. 
+                               
+
+                                </p>
+								
 								<p>La phase online étant accompagnée d'une interface graphique, l'utilisateur doit entrer un ou plusieurs hash de mots de passe dans la barre de recherche, et l'interface va exécuter le logiciel phase online dans le but de retrouver le mot de passe qui correspond au hash donné. <br \>
                                 Voici un aperçu de l'interface graphique :  </p>
 								
@@ -94,6 +90,10 @@
 											<div class="col-4"><span class="image fit"><img src="images/schemaUI1.png" alt="" /></span></div>
 											<div class="col-4"><span class="image fit"><img src="images/schemaUI2.png" alt="" /></span></div>
 								    </div>
+                                <p>
+                                 <br />   
+                                La phase offline est réalisée une seule fois et prends un temps considérable alors que la phase online permet le cassage de mots de passe en masse en un temps très court.
+                                </p>
 									
                             </section>
 					</div>
