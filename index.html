@@ -31,7 +31,7 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">A propos</a></li>
+							<li class="active"><a href="index.html">Le produit</a></li>
 							<li><a href="comment.html">Comment ça marche ?</a></li>
 							<li><a href="equipe.html">L'équipe</a></li>
 							<!-- <li><a href="generic.html">Generic Page</a></li>
@@ -53,45 +53,51 @@
 								<header class="major">
 									<h1>Qu'est ce que GPUCrack ?</h1>
 								</header>
-
-									<p>
-                                    GPUCrack est un casseur de mots de passe Windows. Ce casseur s’appuie sur la technique des compromis temps-mémoire (TMTO) et des rainbow tables. La création de nos tables se fera sur <i>GPU</i> (Graphic processing unit). <br />
-                                    </p>
-                                    <h2>Objectif du projet </h2>
-                                    <p>
-								    Le cassage de mots de passe avec les rainbow tables sur GPU est un sujet de recherche actuel.
-                                    Des implémentations de rainbow tables sur CPU ont déjà été réalisées. En revanche, sur GPU, il est difficile de trouver un code correct, minimal et documenté. Notre code pourra alors servir de référence dans ce domaine. <br />
-                                    Le projet peut apporter de nombreuses réponses sur les différences de performance entre CPU et GPU, sur la possibilité de filtrer nos tables sur GPU ou encore sur la distribution possible de la génération de nos tables sur plusieurs GPU.
-                                    </p>    
-
-                                    <h2> Les compromis temps-mémoire</h2>
-                                    <p>
-                                    La technique des compromis temps-mémoire sépare le travail en deux phases :
-                                    </p>
-                                    <ul>
-                                        <li>La phase <b>offline</b></li>
-                                        <li>La phase <b>online</b></li>
-                                    </ul> 
                                     
-                                    <h4>La phase offline</h4>
-                                    <p>
-                                    C'est une phase de pré-calculs qui génère des tables, ici des rainbow tables, les optimise et enfin les exporte. Cette application est éxécutable et distribuable sur GPU.
-                                    <br />
-                                    Une rainbow table est une structure de données qui permet de retrouver un mot de passe à partir de son hash. 
-                                    Une rainbow table est créée en générant des chaînes. Pour créer une chaîne, on part d’un mot de passe que l’on va hacher puis ce hash sera réduit avec une fonction de réduction. On continue la construction de la chaîne en refaisant tour à tour un hachage et une réduction sur le nouveau mot de passe. 
-                                    A la fin, la table gardera seulement la liste de couples (point de départ, point de fin) des chaînes, où les points de départ et les points de fin sont des mots de passe en clair.
-                                    </p>
+                                <p>
+                                GPUCrack est un casseur de mots de passe Windows. Ce casseur s’appuie sur la technique des compromis temps-mémoire (TMTO) et des rainbow tables. La création de nos tables se fera sur GPU (Graphic processing unit).
+                                </p>
+
+                                <h3>
+                                Mots de passe Windows
+                                </h3>
+
+                                <p>
+                                Dans chaque ordinateur, ce ne sont pas les mots de passe en clair qui sont stockés sur le disque mais un hash (haché ou empreinte) de mot de passe c’est-à-dire que les mots de passe sont transformés grâce à une fonction de hachage. Lorsqu’un utilisateur essaye de se connecter à son ordinateur, il entre son mot de passe puis celui-ci est haché et comparé au mot de passe haché déjà stocké. Si une correspondance est trouvée, la session de l’utilisateur est ouverte.
+                                </p>
                                 
-                                    <div class="image main"><img src="images/rainbowTable.png" alt="" /></div>
+                                <p>
+                                Il existe plusieurs façons de casser un mot de passe.
+                                </p>
                                 
-                                    <h4>La phase online </h4>
-                                    <p>
-                                    C'est la phase d’attaque qui permet le chargement des rainbow tables en mémoire afin de rechercher le mot de passe correspondant à un hash donné.
-                                    Cette application associé avec une interface graphique permet à l'utilisateur de rechercher un mot de passe à partir d'un hash de façon ludique mais également d'avoir accès à des rapports d'analyse sur, par exemple, la mémoire utilisée par les tables, le temps de génération de celles-ci ou le temps de recherche du mot de passe. 
-                                    <br /> <br /> <br />   
-                                    La phase offline est réalisée une seule fois et prends un temps considérable alors que la phase online permet le cassage de mots de passe en masse en un temps très court. <br />
-                                    
-                                    </p>
+                                <h3>
+                                Recherche exhaustive
+                                </h3>
+
+                                <p>
+                                Le but est de tester tous les mots de passe possibles jusqu’à ce que le bon soit trouvé. Avec une machine performante, un mot de passe ne dépassant pas 7 caractères prends quelques secondes voire quelques minutes à être cassé. Cependant, casser un mot de passe de 8 caractères (4 lettres minuscules, 2 caractères spéciaux, 2 chiffres) prend entre deux et trois jours et dès 9 caractères, neuf ans. La recherche exhaustive peut donc être utilisée seulement pour des mots de passe courts.
+                                </p>
+                                
+                                <h3>
+                                Pré-calculs de mots de passe   
+                                </h3>
+
+                                <p>
+                                Comme autre solution pour casser un mot de passe, il y a celle de faire tous les calculs à l’avance et de stocker dans une table tous les couples (mots de passe, hash) possibles qui peuvent être utilisés. Cependant, créer cette table est impossible car cela prendrait plusieurs millions d’années et il n’y a pas de technologie existante pour pouvoir la stocker.
+                                </p>
+                                
+                                <h3>
+                                Technique des compromis temps-mémoire
+                                </h3>
+                                
+                                <p>
+                                La solution choisie pour GPUCrack est la technique de compromis temps-mémoire (TMTO), proposée pour la première fois par Martin Hellman en 1980. Cette technique nécessite des pré-calculs qui sont coûteux, mais qui ne sont réalisés qu’une seule fois. La phase d’attaque prend ensuite seulement quelques secondes. En 2003, Philippe Oechslin réalise une amélioration des tables de Hellman : les rainbow tables. Celles-ci sont utiles pour le cassage de mots de passe. Des explications complètes et précises de cette technique seront données dans la section « Comment ça marche ? ». 
+                                
+                                </p>  
+                                <div class="image main"><img src="images/casserMDP.png" alt="" /></div>
+                                <p>
+                                Les TMTO sont majoritairement utilisés sur des CPU (Central processing unit). Ici la créations des rainbow tables est réalisée sur GPU (Graphics processing unit) afin d’obtenir de meilleures performances et être plus rapide à la génération de tables que sur CPU. 
+                                </p>
                         </section>
 				</div>
 				<!-- Copyright -->
