@@ -49,29 +49,29 @@
 					<div id="main">
 
 						<!-- Post -->
-							<section class="post">
-								<header class="major">
+							<section class="post">  
+                                <header class="major">
 									<h1>Qu'est ce que GPUCrack ?</h1>
 								</header>
-                                    
-                                <p>
-                                GPUCrack est un casseur de mots de passe Windows. Ce casseur s’appuie sur la technique des compromis temps-mémoire (TMTO) et des rainbow tables. La création de nos tables se fera sur GPU (Graphic processing unit).
-                                </p>
-
-                                <h3>
-                                Mots de passe Windows
-                                </h3>
-
-                                <p>
-                                Dans chaque ordinateur, ce ne sont pas les mots de passe en clair qui sont stockés sur le disque mais un hash (haché ou empreinte) de mot de passe c’est-à-dire que les mots de passe sont transformés grâce à une fonction de hachage. Lorsqu’un utilisateur essaye de se connecter à son ordinateur, il entre son mot de passe puis celui-ci est haché et comparé au mot de passe haché déjà stocké. Si une correspondance est trouvée, la session de l’utilisateur est ouverte.
-                                </p>
                                 
                                 <p>
-                                Il existe plusieurs façons de casser un mot de passe.
+                                GPUCrack est le premier casseur de mots de passe Windows documenté utilisant les compromis temps-mémoire (TMTO) et les rainbow tables. 
+                                <br/>
+                                Les TMTO sont majoritairement utilisés sur des CPU (Central processing unit). Ici la créations des rainbow tables est réalisée sur GPU (Graphics processing unit) afin d’obtenir de meilleures performances et être plus rapide à la génération de tables que sur CPU.
+                                <br/>
+                                C’est un sujet de recherche actuel et GPUCrack pourra apporter des réponses sur l’utilisation et la distribution des tables sur GPU.
+
+                                </p>
+                                <h2>
+                                Pourquoi utiliser les TMTO pour casser un mot de passe ?
+                                </h2>
+                                
+                                <p>
+                                Il existe plusieurs façons de casser un mot de passe, dont :
                                 </p>
                                 
                                 <h3>
-                                Recherche exhaustive
+                                La recherche exhaustive
                                 </h3>
 
                                 <p>
@@ -79,7 +79,7 @@
                                 </p>
                                 
                                 <h3>
-                                Pré-calculs de mots de passe   
+                                Un dictionnaire de mots de passe   
                                 </h3>
 
                                 <p>
@@ -87,17 +87,25 @@
                                 </p>
                                 
                                 <h3>
-                                Technique des compromis temps-mémoire
+                                La technique des compromis temps-mémoire
                                 </h3>
                                 
                                 <p>
                                 La solution choisie pour GPUCrack est la technique de compromis temps-mémoire (TMTO), proposée pour la première fois par Martin Hellman en 1980. Cette technique nécessite des pré-calculs qui sont coûteux, mais qui ne sont réalisés qu’une seule fois. La phase d’attaque prend ensuite seulement quelques secondes. En 2003, Philippe Oechslin réalise une amélioration des tables de Hellman : les rainbow tables. Celles-ci sont utiles pour le cassage de mots de passe. Des explications complètes et précises de cette technique seront données dans la section « Comment ça marche ? ». 
                                 
                                 </p>  
+                                <br/>
+                                <h3>
+                                Comparaison des différentes techniques
+                                </h3>
+                                On compare le temps de cassage d'un mot passe et la mémoire utilisée de ces trois méthodes.
+                               
+                                La technique des compromis temps-mémoire est celle ayant le meilleur ratio.
                                 <div class="image main"><img src="images/casserMDP.png" alt="" /></div>
-                                <p>
-                                Les TMTO sont majoritairement utilisés sur des CPU (Central processing unit). Ici la créations des rainbow tables est réalisée sur GPU (Graphics processing unit) afin d’obtenir de meilleures performances et être plus rapide à la génération de tables que sur CPU. 
-                                </p>
+                                
+                                <br/>
+                                
+                                
                         </section>
 				</div>
 				<!-- Copyright -->
