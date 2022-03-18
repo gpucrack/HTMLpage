@@ -25,7 +25,7 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li><a href="index_en.html">About the project</a></li>
+							<li><a href="index_en.html">About the product</a></li>
 							<li class="active"><a href="comment_en.html">How to use it?</a></li>
 							<li><a href="equipe_en.html">The team</a></li>
 							<!-- <li><a href="generic.html">Generic Page</a></li>
@@ -45,8 +45,24 @@
 								<header class="major">
 									<h1>How to use it?</h1>
 								</header>
-								<h2>Offline phase</h2>
-								<p>The application is used on the command line and is configurable, in order to manage the number of chains in a table and the number of tables that we want. This application is intended to be executed on a cluster like Grid'5000, Grid'5000 being a network of machines dedicated to distributed computing and experiments.</p>
+                                    <p>
+                                    The time-memory trade-off technique separates the work into two phases:
+                                    </p>
+                                    <ul>
+                                        <li>The <b>offline</b> phase</li>
+                                        <li>The <b>online</b> phase</li>
+                                    </ul> 
+                                    
+                                    <h3>The offline phase</h3>
+                                    <p>
+                                    It is a pre-calculation phase that generates tables, here rainbow tables, optimizes them and finally exports them. This application is executable and distributable on GPU.
+                                    <br />
+                                    A rainbow table is a data structure that allows to find a password from its hash. 
+                                    A rainbow table is created by generating chains. To create a chain, we start from a password which will be hashed then this hash will be reduced with a reduction function. We continue the construction of the chain by doing a hash and a reduction on the new password. At the end, the table will keep only the list of couples (starting point, ending point) of the chains, where the starting points and the ending points are plain text passwords.
+                                    </p>
+                                    <div class="image main"><img src="images/rainbowTableEn.png" alt="" /></div>
+                                
+                                    <p>The application of the offline phase is used on the command line and is configurable, in order to manage the number of chains in a table and the number of tables that we want. This application is intended to be executed on a cluster like Grid'5000, Grid'5000 being a network of machines dedicated to distributed computing and experiments.</p>
 								<pre><code>./generateTable c mt (startpath) (endpath)</code></pre>
 								<ul>
 									<li><b>c</b> is the length of a password (in characters)</li>
@@ -55,17 +71,24 @@
 									<li>(optional) <b>endpath</b> is the path to the ending point file that will be created</li>
 								</ul>
 								
-								<p>This will create two separate files at the specified paths. These files contain the filtered start and end points, i.e. without duplicates.</p>
-
-							
-								<h2>Online phase</h2>
-								<p>The online phase is accompanied by a graphical interface. The user must enter one or more password hashes in the search bar, and the interface will run the online phase software in order to find the password that matches the given hash. <br \>
+								    <p>This will create two separate files at the specified paths. These files contain the filtered start and end points, i.e. without duplicates.</p>
+                                
+                                    <h3>The online phase</h3>
+                                    <p>
+                                    It is the attack phase that allows the loading of rainbow tables in memory in order to search for the password corresponding to a given hash. This application associated with a graphical interface allows the user to search for a password from a hash in a playful way. it also allows the user to have access to analysis reports on the memory used by the tables, the time of generation of these tables or the time of search of the password. 
+                                </p>
+								
+								<p>The online phase is accompanied by a graphical interface. The user must enter one or more password hashes in the search bar, and the interface will run the online phase software in order to find the password that matches the given hash. <br/>
                                 Here is an overview of the graphical interface:  </p>
 								
 									<div class="row gtr-50 gtr-uniform" >
 											<div class="col-4"><span class="image fit"><img src="images/schemaUI1.png" alt="" /></span></div>
 											<div class="col-4"><span class="image fit"><img src="images/schemaUI2.png" alt="" /></span></div>
 								    </div>
+                                    <p>
+                                    <br />
+                                    The offline phase is run only once and takes a considerable amount of time, whereas the online phase allows for mass password cracking in a very short time. 
+                                    </p>
 									
                             </section>
 					</div>
